@@ -1,0 +1,28 @@
+//@note contract_creation_bytecode: 60008060093d393df3
+//@note runtime_bytecode: 5f 35 (60_e0) 1c
+#define macro MAIN() = takes(0) returns(0) {
+    // load function selector to the stack
+    0x00 calldataload 0xe0 shr
+    dup1
+
+    //1.updateHorseNumber selector
+    0xcdfead2e eq
+    //jump to `updateHorseNumber` if true
+    updateJump
+    jumpi 
+
+    //2.readNumberOfHorses selector
+    0xe026c017 eq
+    readJump
+    jumpi
+
+    updateJump:
+        SET_NUMBER_OF_HORSES()
+    
+    readJump:
+        READ_NUMBER_OF_HORSES()
+}
+
+#define macro SET_NUMBER_OF_HORSES() = takes(0) returns(0) {}
+
+#define macro READ_NUMBER_OF_HORSES() = takes(0) returns(0) {}
