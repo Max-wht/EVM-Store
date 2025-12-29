@@ -1,0 +1,51 @@
+#define function mintHorse() nonpayable returns()
+#define function feedHorse(uint256) nonpayable returns()
+#define function isHappyHorse(uint256) view returns (bool)
+#define function horseIdToFedTimeStamp(uint256) view returns (uint256)
+#define function HORSE_HAPPY_IF_FED_WITHIN() view returns (uint256)
+
+#define macro MAIN() = takes(0) returns(0) {
+    // load function selector to the stack
+    0x00 calldataload 0xe0 shr
+
+    dup1 __FUNC_SIG(mintHorse) eq mintJump jumpi 
+
+    dup1 __FUNC_SIG(feedHorse) eq feedJump jumpi 
+
+    dup1 __FUNC_SIG(isHappyHorse) eq isHappyJump jumpi 
+
+    dup1 __FUNC_SIG(horseIdToFedTimeStamp) eq horseIdToFedTimeStampJump jumpi 
+
+    dup1 __FUNC_SIG(HORSE_HAPPY_IF_FED_WITHIN) eq HORSE_HAPPY_IF_FED_WITHINJump jumpi 
+
+    0x00 0x00 revert
+
+    mintJump:
+        MINT_HORSE()
+    feedJump:
+        FEED_HORSE()
+    isHappyJump:
+        IS_HAPPY_HORSE()
+    horseIdToFedTimeStampJump:
+        HORSE_ID_TO_FED_TIME_STAMP()
+    HORSE_HAPPY_IF_FED_WITHINJump:
+        HORSE_HAPPY_IF_FED_WITHIN()
+
+    /*
+    mintHorse()
+    feedHorse(uint256 horseId)
+    isHappyHorse(uint256 horseId)
+    horseIdToFedTimeStamp()
+    HORSE_HAPPY_IF_FED_WITHIN()
+    */
+}
+
+#define macro MINT_HORSE() = takes(0) returns(0) {}
+
+#define macro FEED_HORSE() = takes(0) returns(0) {}
+
+#define macro IS_HAPPY_HORSE() = takes(0) returns(0) {}
+
+#define macro HORSE_ID_TO_FED_TIME_STAMP() = takes(0) returns(0) {}
+
+#define macro HORSE_HAPPY_IF_FED_WITHIN() = takes(0) returns(0) {}
