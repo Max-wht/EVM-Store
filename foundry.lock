@@ -8,6 +8,9 @@
   "lib/foundry-huff": {
     "rev": "7d1ce15ccf92bd68458c7e28e0ae847b64b4fc74"
   },
+  "lib/huffmate": {
+    "rev": "4e2c9bd3412ab8cc65f6ceadafc01a1ff1815796"
+  },
   "lib/openzeppelin-contracts": {
     "tag": {
       "name": "v5.5.0",
